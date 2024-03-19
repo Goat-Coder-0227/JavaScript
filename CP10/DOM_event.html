@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - event</title>
+    <script>
+        // !! 중요 !!) 익명 함수 대신 람다 함수 작성 시 this는 이벤트가 발생한 객체를 가리키지 않는다!
+        // this -> 이벤트 리스너 안에서 사용 시 이벤트가 발생한 객체를 가리킴
+        // 따라서 h1 Tag를 클릭 시 this를 통해 style을 변경하려면 람다 함수가 아닌 익명 함수로 작성해야 한다!
+        window.onload = function () {
+            document.getElementById("header").onclick = function () {
+                alert(this);
+                this.style.color = 'red';
+                this.style.backgroundColor = "yellow";
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <h1 id="header">Click</h1>
+</body>
+
+</html>

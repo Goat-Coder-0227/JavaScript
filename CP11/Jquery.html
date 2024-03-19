@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>JQuery</title>
+    <script>
+        // on() : 이벤트를 연결하는 메서드
+
+        $(document).ready(function () {
+            // 1번째 사용 방법 ) $(selector).on(event Name : eventName, event Handler or event Listener : function(event) {})
+            $('h1').on('click', function () {
+                $(this).html(function (index, html) {
+                    console.log(html);
+                    return html + '+';
+                })
+            });
+
+            /*
+            2번째 사용 방법 ) $(selector).on(Object : {
+                eventName : function() { $(this).method(); },
+                eventName : function() { $(this).method(); }
+            });
+            */
+            $('h1').on({
+                mouseenter: function () {
+                    $(this).addClass('reverse');
+                    $('.reverse').css({
+                        'background': 'black',
+                        'color': 'white'
+                    });
+                },
+                mouseleave: function () {
+                    $(this).removeClass('reverse');
+                    $(this).css({
+                        'background': 'white',
+                        'color': 'black'
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
+
+</html>
