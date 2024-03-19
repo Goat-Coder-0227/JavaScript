@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM - window, screen, navigator</title>
+    <script>
+        /*
+            팝업창을 생성하고 전체화면으로 만든 후,
+            1초마다 크기를 변환하고 이동해 점점 가운데로 수렴
+        */
+
+        let child = window.open('', '', 'width=300, height=200');
+        let width = screen.width;
+        let height = screen.height;
+
+        child.moveTo(0, 0);
+        child.resizeTo(width, height);
+
+        setInterval(function () {
+            child.resizeBy(-20, -20);
+            child.moveBy(10, 10);
+        }, 1000);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

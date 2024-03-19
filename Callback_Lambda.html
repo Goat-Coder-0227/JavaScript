@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback_Lambda</title>
+    <script>
+        (function () {
+            'use strict'
+            const hello = function (call_param) {
+                console.log(`${call_param}번째 안녕하세요`);
+            }
+            const test = function (arr, callback) {
+                for (const value of arr) callback(value);
+                console.log("\n");
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <script>
+        test([273, 52, 103, 32, 57], hello);
+
+        const arr = [273, 52, 103, 32, 57];
+
+        arr.forEach(function (value, index) {
+            console.log(`${index}번째의 값은 ${value}`);
+        });
+
+        let arr_filter = arr.filter(function (value, index) {
+            return value % 2 == 0
+        });
+        console.log(arr_filter);
+        console.log();
+
+        let arr_map = arr.map(function (value, index) {
+            return value % 2 == 0;
+        });
+        console.log(arr_map);
+    </script>
+</body>
+
+</html>

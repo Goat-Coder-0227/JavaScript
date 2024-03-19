@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - create</title>
+    <script>
+        window.onload = function () {
+            /*
+                텍스트 노드를 갖는 문서 객체 생성)
+                =>노드 요소(header)와 텍스트 노드(textNode) 생성 후 body 문서 객체에 연결.
+            */
+            let header = document.createElement('h1');
+            let textNode = document.createTextNode('Hello DOM');
+
+            header.appendChild(textNode);
+            document.body.appendChild(header);
+            // 1) 요소 노드와 텍스트 노드를 생성
+            // 2) 텍스트 노드를 요소 노드에 추가
+            // 3) 요소 노드(텍스트 노드 추가된 상태)를 부모 노드(추가할 노드)에 추가
+
+            /*
+                텍스트 노드를 갖지 않는 문서 객체 생성 및 속성 변경)
+                    =>노드 요소(img) 생성 후 body 문서 객체에 연결.
+            */
+            let img = document.createElement('img');
+            img.setAttribute('src', './image/test.jpg');
+            img.setAttribute('width', 500);
+            img.setAttribute('height', 350);
+            img.setAttribute('data-property', 350);
+
+            document.body.appendChild(img);
+            console.log(img.dataset);
+            // 1) 요소 노드를 생성
+            // 2) 요소 노드의 속성을 지정
+            // 3) 요소 노드를 부모 노드(추가할 노드)에 추가
+
+            /*
+                문서 객체에 바로 노드를 생성)
+                    => 문자열을 선언 후 body 문서 객체의 innerHTML 속성을 사용하여 추가.
+            let output = ``;
+            output += `<ul>`;
+            output += `    <li>JavaScript</li>`;
+            output += `    <li>C++</li>`;
+            output += `    <li>Java</li>`;
+            output += `</ul>`;
+        
+            document.body.innerHTML = output;
+            document.body.innerHTML += `<h1>Document Object Model</h1>`;
+            // 1) 추가할 노드를 문자열로 선언
+            // 2) body 문서 객체의 innerHTML 속성에 직접 추가
+            */
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

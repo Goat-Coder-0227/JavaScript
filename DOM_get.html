@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - get</title>
+    <script>
+        window.onload = function () {
+            let header1 = document.getElementById("header-1");
+            let header2 = document.getElementById("header-2");
+            header1.innerHTML = 'with getElementById()';
+            header2.innerHTML = 'with getElementById()';
+
+            let headers = document.getElementsByTagName("h2");
+            for (let i = 0; i < headers.length; i++) {
+                headers[i].innerHTML = 'with getElementsByTagName()';
+            }
+
+            let header3 = document.querySelector("#header-3");
+            header3.innerHTML = 'with querySelector("#header-3")';
+
+            let headers_query = document.querySelectorAll("#header-4");
+            for (let i = 0; i < headers_query.length; i++) {
+                headers_query[i].innerHTML = 'with querySelectorAll("#header-4")';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="header-1">Header</h1>
+    <h1 id="header-2">Header</h1>
+    <h2>Header</h2>
+    <h2>Header</h2>
+    <h1 id="header-3">Header</h1>
+    <h1 id="header-4">Header</h1>
+    <h3 id="header-4">Header</h3>
+</body>
+
+</html>
