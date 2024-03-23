@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        thead {
+            background-color: orange;
+            font-weight: bold;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #bcbcbc;
+        }
+
+        table {
+            width: 80%;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            const today = new Date();
+            const last_dates_arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            const days_arr = ['일', '월', '화', '수', '목', '금', '토']
+            $("h1").html(`${today.getFullYear()}년 ${today.getMonth() + 1}월`);
+
+            $("#calendar_days").append("<tr>");
+            days_arr.forEach(value => {
+                let text = "";
+                text += `<td>${value}</td>`;
+
+                $('#calendar_days > tr').append(text);
+            });
+
+            $("#calendar_date").append("<tr>");
+        });
+    </script>
+</head>
+
+<body>
+    <h1></h1>
+    <table>
+        <thead id="calendar_days">
+
+        </thead>
+        <tbody id="calendar_date">
+
+        </tbody>
+    </table>
+</body>
+
+</html>
