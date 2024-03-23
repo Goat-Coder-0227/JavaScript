@@ -15,49 +15,87 @@
         thead {
             background-color: orange;
             font-weight: bold;
+            width: 500px;
+            height: 50px;
+        }
+
+        tbody td {
+            background-color: yellow;
         }
 
         table,
         th,
         td {
-            border: 1px solid #bcbcbc;
+            border: 0px;
+
         }
 
         table {
-            width: 80%;
+            width: 500px;
+            height: 400px;
+            text-align: center;
+            margin: 0 auto;
         }
     </style>
     <script>
         $(function () {
-
             const today = new Date();
-            const last_dates_arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            const last_dates_arr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
             const days_arr = ['일', '월', '화', '수', '목', '금', '토']
-            $("h1").html(`${today.getFullYear()}년 ${today.getMonth() + 1}월`);
+            const first_day = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
 
-            $("#calendar_days").append("<tr>");
+            if (today.getFullYear() % 4 == 0) {
+                last_dates_arr[1] = 28;
+            }
+
+            let h1 = $("<h1></h1>");
+            h1.html(`${today.getFullYear()}년 ${today.getMonth() + 1}월`);
+            $("body").append(h1);
+
+            let table = $("<table></table>");
+            $("body").append(table);
+            let thead = $("<thead id=calendar_head></thead>");
+            $("table").append(thead);
+            let tbody = $("<tbody id=calendar_body></tbody>");
+            $("table").append(tbody);
+
+            thead.append(`<tr>`);
             days_arr.forEach(value => {
-                let text = "";
-                text += `<td>${value}</td>`;
+                let text = '';
+                text += `<th>${value}</th>`;
 
-                $('#calendar_days > tr').append(text);
-            });
+                $(`#calendar_head > tr`).append(text);
+            })
 
-            $("#calendar_date").append("<tr>");
+            let i = 1;
+            while (i <= last_dates_arr[today.getMonth()]) {
+                let body_tr = $("<tr></tr>");
+                $("#calendar_body").append(body_tr);
+
+                for (let j = 0; j < 7; j++) {
+                    if (i !== 1 || j === first_day) {
+                        let body_td = $(`<td>${i}</td>`);
+                        body_tr.append(body_td);
+
+                        if (i === today.getDate()) {
+                            body_td.css("background-color", "pink");
+                        }
+
+                        if (i++ > last_dates_arr[today.getMonth()]) {
+                            break;
+                        }
+                    }
+                    else {
+                        let body_td = $("<td></td>");
+                        body_tr.append(body_td);
+                    }
+                }
+            }
         });
     </script>
 </head>
 
 <body>
-    <h1></h1>
-    <table>
-        <thead id="calendar_days">
-
-        </thead>
-        <tbody id="calendar_date">
-
-        </tbody>
-    </table>
 </body>
 
 </html>
